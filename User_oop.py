@@ -18,7 +18,7 @@ class User:
     
     #metodo para mostrar saldo
     def show_balance(self):
-        print(f"Your balance is: {self.account}.")
+        print(f"Hi {self.name}, your balance is: {self.account}.")
 
     #BONUS: transferir a otro usuario
     def transfer_user(self,user2,transfer):
