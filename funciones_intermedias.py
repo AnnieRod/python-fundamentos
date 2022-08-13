@@ -28,7 +28,8 @@ print(z) #punto 4: [{'x': 10, 'y': 30}]
 def iterateDictionary(some_list):
         for playerDic in some_list:
             for nameF,nameL in playerDic.items():
-                print(f"{nameF} - {nameL}")
+                print(f"{nameF} - {nameL}", end = " ") #python por defecto pone un salto de linea, con el end space se lo quito
+            print("")
 
 
 estudiantes = [
