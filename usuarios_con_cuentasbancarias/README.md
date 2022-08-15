@@ -2,4 +2,4 @@
 
 El archivo BASIC tiene la resolucion del ejercicio con los puntos basicos que piden, funciona perfecto. 
 
-El archivo SENSEI tiene un intento de aplicacion del BONUS. En estructura parece estar bien, pero no esta funcionando, no logro que las cuentas en el diccionario tomen los metodos de user, ni los de Bankaccount ahora tampoco. . .
+EDIT: Ya logré que funcionara mi solucion al bonus SENSEI. . . Pero dejo el archivo para ver como es el funcionamienoto con uan soal cuenta y como funciona ya con un diccionario de cuentas (en el caso de lbonus sensei). 
