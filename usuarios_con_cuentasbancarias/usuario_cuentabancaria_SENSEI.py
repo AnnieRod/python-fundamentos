@@ -1,12 +1,10 @@
 
 class Bankaccount: 
-    allAccounts = []
     
     #creacion  de instancias de cuentas
     def __init__(self, interest_rate, balance_acc):
         self.interest = interest_rate
         self.balance = balance_acc
-        Bankaccount.allAccounts.append(self)
     
     #metodo de deposito
     def deposit(self,amount):
@@ -15,7 +13,7 @@ class Bankaccount:
 
     #metodo de mostrar info de la cuenta
     def account_info(self):
-        print(f"Balance: ${self.balance}")   
+        print(f"Balance: ${self.balance} - Interest Rate: {self.interest}")        
         return self 
     
     #metodo para generar intereses
@@ -40,11 +38,6 @@ class Bankaccount:
             return False
         else:
             return True
-    #BONUS NINJA: Metodo que imprime información de todas las instancias
-    @classmethod
-    def list_accounts(cls):                 #PREGUNTA: tiene sentido dejar esto si en User le digo que imprima la info de la cuenta especificada con la key del diccionario?
-        for account in cls.allAccounts:      # Si lo ejecuto me da la info de las cuentas del user dos veces
-            print(f"Balance: ${account.balance} - Interest Rate: {account.interest}")
 
 #añade clase de User y se asocia con metodos de Bankaccount
 class User: 
@@ -53,11 +46,15 @@ class User:
         self.name = name
         self.mail = mail_dir
         #BONUS SENSEI: PERMITE AL USER TENER MÁS DE UNA CUENTA
-        self.account = {     
-            "main_account": Bankaccount(interest_rate=0.02, balance_acc=0),
-            "savings_account": Bankaccount(interest_rate=0.03, balance_acc=2000)
-        }
+        self.account = {}
 
+    #agrega cuenta nueva al usuario BONUS SENSEI
+    def createAcc (self, acc_name,interest,balance):
+        self.account[acc_name] = Bankaccount(balance_acc=balance, interest_rate=interest)
+        print(f"account named {acc_name} created!")
+        return self
+
+    #metodos para movimientos bancarios
     def deposit_amount(self, amount, acc_name):
         self.account[acc_name].deposit(amount)
         return self
@@ -73,8 +70,7 @@ class User:
     def gen_interest(self, acc_name):
         self.account[acc_name].generate_interest()
         return self
+        
 
-annie = User("Annie","annie@mail.com") 
-# PREGUNTA: ¿como hago para darle argumentos diferentes a los default a la cuenta de cada usuario al crearlo? Para que cada usuario tenga balances e intereses diferentes desde el inicio
-
-annie.deposit_amount(200,"main_account").deposit_amount(1000,"savings_account").take_money(800, "savings_account").gen_interest("savings_account").show_balance("savings_account").show_balance("main_account")
+annie = User("Annie", "annie@mail.com")
+annie.createAcc("main", balance=4000, interest=0.01).createAcc("savings", balance=2000, interest=0.03).deposit_amount(500, "main").take_money(800, "savings").gen_interest("savings").show_balance("main").show_balance("savings")
