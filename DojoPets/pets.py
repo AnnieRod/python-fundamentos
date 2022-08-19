@@ -28,7 +28,7 @@ class Pet:
         print(f"{self.type}'s current health: {self.health} - energy: {self.energy}.")
 
 
-#INTENTO DE Creación de categoría hija Cat (Bonus sensei herencia)
+#BONUS SENSEI: Creación de categoría hija Cat
 class Cat(Pet):
     def __init__(self, type, snacks, energy, health, sound):
         super().__init__(type, snacks, energy, health, sound)
@@ -48,10 +48,15 @@ class Cat(Pet):
         return self
 
     def noise(self): 
-        print(f"Your cat {self.name} goes meow!") 
+        print(f"Your cat {self.type} goes meow!") 
         return self
     
     def play (self):
         self.health+= 15
         print("I'll bite you if you touch my belly")
         return self
+
+#Ejecuta solo aqui pero no al importar 
+if __name__ == "__main__":
+    enzo = Cat(type="calico", snacks="tuna", energy=60, health=60, sound="meeeow")
+    enzo.sleep().noise().play()
