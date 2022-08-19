@@ -1,5 +1,6 @@
 from producto import Product
 from tienda import Store
+
 #Creación de instancias
 annies_shop = Store("Annie's market")
 goldfish = Product("Goldfish Crackers", 5000, "Snacks") 
